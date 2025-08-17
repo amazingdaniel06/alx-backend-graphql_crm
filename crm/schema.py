@@ -13,7 +13,6 @@ class Query(graphene.ObjectType):
     all_products = DjangoFilterConnectionField(ProductType, filterset_class=ProductFilter)
     all_orders = DjangoFilterConnectionField(OrderType, filterset_class=OrderFilter)
 
-
 # GraphQL Types
 class CustomerType(DjangoObjectType):
     class Meta:

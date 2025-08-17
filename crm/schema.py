@@ -5,6 +5,13 @@ from .models import Customer, Product, Order
 from django.db import transaction
 from graphql import GraphQLError
 from django.utils import timezone
+from graphene_django.filter import DjangoFilterConnectionField
+from .filters import CustomerFilter, ProductFilter, OrderFilter
+
+class Query(graphene.ObjectType):
+    all_customers = DjangoFilterConnectionField(CustomerType, filterset_class=CustomerFilter)
+    all_products = DjangoFilterConnectionField(ProductType, filterset_class=ProductFilter)
+    all_orders = DjangoFilterConnectionField(OrderType, filterset_class=OrderFilter)
 
 
 # GraphQL Types
